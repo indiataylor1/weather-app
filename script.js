@@ -20,6 +20,8 @@ forecastEl.appendChild(cardContainerEl);
 function handleSearchFormSubmit(event) {
   event.preventDefault();
 
+  forecast = []; // Reset the forecast array to an empty array
+
   if (forecastEl) {
     while (forecastEl.firstChild) {
       forecastEl.removeChild(forecastEl.firstChild);
@@ -40,7 +42,6 @@ function handleSearchFormSubmit(event) {
         const dataStorage = JSON.stringify(data);
         localStorage.setItem("dataStorage", dataStorage);
         displayData();
-        //displayRepos(data, searchInputVal);
       });
     } else if (response.status === 404) {
       clearInput();
@@ -95,14 +96,12 @@ const displayData = function () {
         response.json().then(function (data) {
           console.log(data);
 
-          //get today and format it so it can be easily compared with the dates returned by the api call
+          //get today and format
           var today = dayjs().format("YYYY-MM-DD");
           //console.log(today);
           for (var i = 0; i < data.list.length; i++) {
-            //OpenWeather returns a value called dt_txt which is the date and the time separated by a " ".
             var dateTime = data.list[i].dt_txt.split(" ");
 
-            //this is the data we want to add, anything with a date not today and with a time of noon
             if (dateTime[0] !== today && dateTime[1] === "12:00:00") {
               var futureDate = {
                 date: dayjs(dateTime[0]).format("DD/MM/YYYY"),
@@ -130,7 +129,6 @@ const displayData = function () {
 let displayForecast = function () {
   let forecastEl = document.getElementById("forecast-body");
 
-  // Set the inner HTML of the forecast container element to an empty string (this will remove all of the child elements)
   forecastEl.innerHTML = "";
 
   for (var i = 0; i < forecast.length; i++) {
