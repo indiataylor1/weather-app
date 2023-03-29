@@ -1,0 +1,2 @@
+api key 554388edb86f83b04c10657b0a21f79c
+'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&APPID=554388edb86f83b04c10657b0a21f79c
