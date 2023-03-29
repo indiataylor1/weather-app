@@ -1,3 +1,4 @@
+
 body {
     background: url(/darkpinksky.jpg);
     background-size: cover;
@@ -68,7 +69,11 @@ body {
     color: black;
 }
 .history-header{
-    background-color: cyan;
+    background-color: none;
     border-radius: 10px;
     margin-top: 5px;
+    color: white;
+    text-align: center;
+    margin-top: 25px;
+    font-family: roboto;
 }
