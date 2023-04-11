@@ -182,3 +182,5 @@ let displayForecast = function () {
 };
 
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
+
+// may need to change the for loop as does not display 5 day forecast after 12:00 hrs
